@@ -1,0 +1,6 @@
+.before-require::before {
+    content: '*';
+    color: #ff2e00;
+    font-size: 12px;
+    margin-right: 4px;
+}
