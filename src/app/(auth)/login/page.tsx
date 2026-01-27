@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
+import { TOKEN } from '@/constants';
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
@@ -12,9 +14,10 @@ export default function LoginPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // 这里添加登录逻辑
         console.log('登录:', formData);
-        // 登录成功后跳转到 dashboard
+        Cookies.set(TOKEN, 'NEXT_ADMIN_STARTER', {
+            expires: 60,
+        });
         router.push('/dashboard');
     };
 

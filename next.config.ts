@@ -15,7 +15,6 @@ const nextConfig: NextConfig = {
         ],
     },
     output: 'standalone',
-    // Next.js 16 默认使用 Turbopack，添加空配置避免 webpack 配置冲突警告
     turbopack: {},
 };
 

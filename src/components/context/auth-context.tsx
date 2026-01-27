@@ -1,7 +1,6 @@
-import { TOKEN } from '@/constants';
-import Cookies from 'js-cookie';
+'use client';
 import { createContext, useCallback, useContext, useEffect } from 'react';
-import { redirect } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useGlobalStore } from 'store/global';
 
 interface AuthContextValue {
@@ -17,21 +16,20 @@ export const AuthContext = createContext<AuthContextValue | null>(null);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const { setUserInfo } = useGlobalStore();
+    const router = useRouter();
+    const pathname = usePathname();
+
     const login = useCallback(async (params: { phone: string; code: string }) => {}, []);
 
     const logout = useCallback(async () => {}, []);
 
-    const fetchUserInfo = useCallback(async () => {
-        setUserInfo(null);
-    }, [setUserInfo]);
+    const fetchUserInfo = useCallback(async () => {}, []);
 
     useEffect(() => {
-        const hasToken = Cookies.get(TOKEN);
         if (typeof window !== 'undefined') {
             history.scrollRestoration = 'manual';
         }
-        redirect(hasToken ? '/' : '/login');
-    }, []);
+    }, [pathname, router]);
 
     return (
         <AuthContext.Provider

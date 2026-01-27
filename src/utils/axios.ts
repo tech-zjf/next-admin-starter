@@ -3,9 +3,10 @@ import Cookies from 'js-cookie';
 import { ApiResponse } from '@/services/interface';
 import { RESPONSE_CODE } from '@/services/constant';
 import { useGlobalStore } from 'store/global';
+import { TOKEN } from '@/constants';
 
 const requestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-    const token = Cookies.get('token');
+    const token = Cookies.get(TOKEN);
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
@@ -20,7 +21,7 @@ const responseInterceptor = (response: AxiosResponse<ApiResponse>): any => {
     const res = response.data;
     // 未登录处理
     if (res.code === RESPONSE_CODE.UNAUTHORIZED) {
-        Cookies.remove('token');
+        Cookies.remove(TOKEN);
         const { setShowLoginModal } = useGlobalStore.getState();
         setShowLoginModal(true);
         throw new Error(res.message);

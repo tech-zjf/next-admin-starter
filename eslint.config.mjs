@@ -15,6 +15,7 @@ const eslintConfig = [
             // eslint-plugin-react-hooks 7.0+ 新增的规则，对于常见的 React 模式过于严格
             'react-hooks/set-state-in-effect': 'off',
             'react-hooks/refs': 'off',
+            'react-hooks/preserve-manual-memoization': 'off', 
         },
     },
     {
