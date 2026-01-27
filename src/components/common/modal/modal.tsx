@@ -91,13 +91,7 @@ const CustomModal: React.FC<CustomModalProps> = (props) => {
                     >
                         <span className="relative">
                             {confirmText}
-                            {loading && (
-                                <img
-                                    className="absolute left-full top-1/2 ml-2 h-4 w-4 -translate-y-1/2"
-                                    src={StringTools.loadOssImg('loading-white.gif')}
-                                    alt=""
-                                />
-                            )}
+                            {loading && <img className="absolute left-full top-1/2 ml-2 h-4 w-4 -translate-y-1/2" src={undefined} alt="" />}
                         </span>
                     </button>
                 </div>

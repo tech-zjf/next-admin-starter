@@ -1,5 +1,5 @@
 {
-    "name": "howai",
+    "name": "next-admin-starter",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -10,7 +10,7 @@
         "start": "next start",
         "analyzer": "cross-env ANALYZE=true next build",
         "prepare": "husky install",
-        "lint": "next lint",
+        "lint": "eslint src/",
         "format": "prettier --write .",
         "add:ui": "npx shadcn@latest add",
         "clean": "rimraf ./node_modules"
@@ -48,6 +48,8 @@
         "zustand": "^5.0.3"
     },
     "devDependencies": {
+        "@eslint/eslintrc": "^3.3.3",
+        "@eslint/js": "^9.39.2",
         "@tailwindcss/forms": "^0.5.10",
         "@types/ali-oss": "^6.16.1",
         "@types/eslint": "^9.6.1",
@@ -58,8 +60,8 @@
         "@types/react-dom": "^18",
         "chalk": "^4.1.1",
         "cross-env": "^7.0.3",
-        "eslint": "^8",
-        "eslint-config-next": "15.0.3",
+        "eslint": "^9",
+        "eslint-config-next": "^16.1.3",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.1",
         "husky": "^8.0.1",

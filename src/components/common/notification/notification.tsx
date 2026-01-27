@@ -33,9 +33,7 @@ export const CustomNotification: React.FC<NotificationProps> = (props) => {
         >
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                    {notificationIconMap.has(type) && (
-                        <img className="mr-2 h-5 w-5" src={StringTools.loadOssImg(notificationIconMap.get(type)!)} alt="notification icon" />
-                    )}
+                    {notificationIconMap.has(type) && <img className="mr-2 h-5 w-5" src={undefined} alt="notification icon" />}
                     <p
                         className={cn('text-base font-medium text-gray-700 md:text-[18px]', {
                             'text-42-success': type === 'success',
