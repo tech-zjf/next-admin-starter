@@ -1,5 +1,7 @@
-export interface ApiResponse<T> {
-    code: number;
+import { RESPONSE_CODE } from './constant';
+
+export interface ApiResponse<T = any> {
+    code: RESPONSE_CODE;
     message?: string;
     data: T;
 }
@@ -21,4 +23,5 @@ export interface FetchListParams {
     orderBy: OrderByEnum;
     order: OrderEnum;
 }
+
 export const PAGE_SIZE = 10;

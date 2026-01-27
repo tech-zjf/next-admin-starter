@@ -1,5 +1,12 @@
 import { OrderByEnum, OrderEnum } from './interface';
 
+export enum RESPONSE_CODE {
+    /** 成功 */
+    SUCCESS = '00000',
+    /** 未登录 */
+    UNAUTHORIZED = 'A0001',
+}
+
 /**
  * 获取列表默认请求参数
  */

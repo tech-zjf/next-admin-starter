@@ -29,7 +29,6 @@ export class StringTools {
         } else if (parts.length === 2) {
             seconds = parts[0] * 60 + parts[1];
         }
-
         return seconds;
     }
 
@@ -37,10 +36,6 @@ export class StringTools {
         phone = phone?.replace(/\s+/g, '');
         const phoneRegxp = /^(?:(?:\+|00)86)?1\d{10}$/;
         return phoneRegxp.test(phone);
-    }
-
-    static isVerifyCode(code: string) {
-        return /^\d{6}$/.test(code);
     }
 
     static formattedDate(utcTime: string) {

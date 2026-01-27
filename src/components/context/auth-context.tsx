@@ -1,0 +1,55 @@
+import { TOKEN } from '@/constants';
+import Cookies from 'js-cookie';
+import { createContext, useCallback, useContext, useEffect } from 'react';
+import { redirect } from 'next/navigation';
+import { useGlobalStore } from 'store/global';
+
+interface AuthContextValue {
+    /** 登录 */
+    login: (params: { phone: string; code: string }) => Promise<void>;
+    /** 退出登录 */
+    logout: () => Promise<void>;
+    /** 获取用户信息 */
+    fetchUserInfo: () => Promise<void>;
+}
+
+export const AuthContext = createContext<AuthContextValue | null>(null);
+
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const { setUserInfo } = useGlobalStore();
+    const login = useCallback(async (params: { phone: string; code: string }) => {}, []);
+
+    const logout = useCallback(async () => {}, []);
+
+    const fetchUserInfo = useCallback(async () => {
+        setUserInfo(null);
+    }, [setUserInfo]);
+
+    useEffect(() => {
+        const hasToken = Cookies.get(TOKEN);
+        if (typeof window !== 'undefined') {
+            history.scrollRestoration = 'manual';
+        }
+        redirect(hasToken ? '/' : '/login');
+    }, []);
+
+    return (
+        <AuthContext.Provider
+            value={{
+                login,
+                logout,
+                fetchUserInfo,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
+};
+
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
+};

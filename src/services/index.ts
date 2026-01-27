@@ -1,15 +1,17 @@
 import { AxiosInstance } from 'axios';
-import { instance } from '@/utils';
 import User from './modules/user';
+import { authInstance, baseInstance } from '@/utils';
 
-class Api {
+class AuthApi {
     user: User;
-
     constructor(axiosInstance: AxiosInstance) {
         this.user = new User(axiosInstance);
     }
 }
+class BaseApi {
+    constructor(axiosInstance: AxiosInstance) {}
+}
 
-const $api = new Api(instance);
+export const $authApi = new AuthApi(authInstance);
 
-export default $api;
+export const $baseApi = new BaseApi(baseInstance);

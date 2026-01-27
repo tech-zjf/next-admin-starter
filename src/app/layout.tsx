@@ -1,7 +1,7 @@
-import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import Head from 'next/head';
 import './globals.css';
+import { AuthProvider } from '@/components/context/auth-context';
 
 export const metadata: Metadata = {
     title: 'nextjs',
@@ -14,8 +14,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             </Head>
-            <body>{children}</body>
-            <GoogleAnalytics gaId="G-10F2C2FPDK" />
+            <body>
+                <AuthProvider>{children}</AuthProvider>
+            </body>
         </html>
     );
 }
