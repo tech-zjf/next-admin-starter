@@ -4,11 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-export function LoginModal({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
+export function LoginModal() {
     return (
         <div className="fixed left-0 top-0 z-[9999] flex items-center justify-center bg-black bg-opacity-60">
             <div className="w-[400px] bg-white">
-                <div className={cn('flex flex-col gap-6', className)} {...props}>
+                <div className={cn('flex flex-col gap-6')}>
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-2xl">Login</CardTitle>

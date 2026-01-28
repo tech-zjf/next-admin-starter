@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useCallback, useContext, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { useGlobalStore } from 'store/global';
+import { useGlobalStore } from '@/store/global';
 
 interface AuthContextValue {
     /** 登录 */

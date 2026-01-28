@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'ax
 import Cookies from 'js-cookie';
 import { ApiResponse } from '@/services/interface';
 import { RESPONSE_CODE } from '@/services/constant';
-import { useGlobalStore } from 'store/global';
+import { useGlobalStore } from '@/store/global';
 import { TOKEN } from '@/constants';
 
 const requestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
