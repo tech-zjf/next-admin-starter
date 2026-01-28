@@ -15,6 +15,21 @@
     "success": "成功",
     "error": "错误",
     "warning": "警告",
+    "loginModal": {
+        "title": "登录您的账户",
+        "description": "请输入您的手机号和密码",
+        "phone": "手机号",
+        "phonePlaceholder": "13800138000",
+        "password": "密码",
+        "passwordPlaceholder": "请输入密码",
+        "forgotPassword": "忘记密码？",
+        "loggingIn": "登录中...",
+        "login": "登录",
+        "loginSuccess": "登录成功",
+        "loginFailed": "登录失败，请检查您的手机号和密码",
+        "phoneRequired": "请输入手机号",
+        "passwordRequired": "请输入密码"
+    },
     "header": {
         "title": "后台管理系统",
         "welcome": "欢迎",
@@ -26,7 +41,7 @@
     "sidebar": {
         "home": "首页",
         "materialLibrary": "素材库",
-        "superHitGeneration": "超爆款生成",
+        "generation": "超爆款生成",
         "edit": "剪辑",
         "help": "帮助",
         "notifications": "通知",

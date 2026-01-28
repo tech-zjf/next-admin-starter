@@ -19,10 +19,10 @@ const Sidebar = () => {
     };
 
     const mainMenuItems: MenuItem[] = [
-        { icon: Home, labelKey: 'home', href: '/dashboard' },
+        { icon: Home, labelKey: 'home', href: '/home' },
         { icon: ImageIcon, labelKey: 'materialLibrary', href: '/material-library' },
-        { icon: Lightbulb, labelKey: 'superHitGeneration', href: '/super-hit-generation' },
-        { icon: Film, labelKey: 'edit', href: '/edit' },
+        { icon: Lightbulb, labelKey: 'generation', href: '/generation' },
+        { icon: Film, labelKey: 'edit', href: '/video-clip' },
     ];
 
     const bottomMenuItems: MenuItem[] = [

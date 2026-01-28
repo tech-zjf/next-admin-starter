@@ -1,12 +1,16 @@
 'use client';
 import { createContext, useCallback, useContext, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import Cookies from 'js-cookie';
 import { useGlobalStore } from '@/store/global';
 import { LoginModal } from '../common/auth/login-modal';
+import { $authApi } from '@/services';
+import { TOKEN } from '@/constants';
+import { LoginParams, UserInfo } from '@/services/modules/user/interface';
 
 interface AuthContextValue {
     /** 登录 */
-    login: (params: { phone: string; code: string }) => Promise<void>;
+    login: (params: LoginParams) => Promise<void>;
     /** 退出登录 */
     logout: () => Promise<void>;
     /** 获取用户信息 */
@@ -16,21 +20,46 @@ interface AuthContextValue {
 export const AuthContext = createContext<AuthContextValue | null>(null);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const { setUserInfo, showLoginModal } = useGlobalStore();
+    const { userInfo, setUserInfo, showLoginModal, setShowLoginModal } = useGlobalStore();
     const router = useRouter();
     const pathname = usePathname();
 
-    const login = useCallback(async (params: { phone: string; code: string }) => {}, []);
+    const login = useCallback(
+        async (params: LoginParams) => {
+            try {
+                const { access_token, user } = await $authApi.user.login(params);
+                Cookies.set(TOKEN, access_token, { expires: 90, path: '/' });
+                setUserInfo(user);
+                setShowLoginModal(false);
+            } catch (error) {}
+        },
+        [setShowLoginModal, setUserInfo],
+    );
 
-    const logout = useCallback(async () => {}, []);
+    const logout = useCallback(async () => {
+        Cookies.remove(TOKEN, { path: '/' });
+        setUserInfo(null);
+        router.push('/');
+    }, [setUserInfo, router]);
 
-    const fetchUserInfo = useCallback(async () => {}, []);
+    const fetchUserInfo = useCallback(async () => {
+        try {
+            const userInfo = await $authApi.user.getCurrentUser();
+            setUserInfo(userInfo);
+        } catch (error) {
+            setUserInfo(null);
+        }
+    }, [setUserInfo]);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             history.scrollRestoration = 'manual';
         }
-    }, [pathname, router]);
+        const hasToken = Cookies.get(TOKEN);
+        if (hasToken && !userInfo) {
+            fetchUserInfo();
+        }
+    }, [fetchUserInfo, pathname, router, userInfo]);
 
     return (
         <AuthContext.Provider

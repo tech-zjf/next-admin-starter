@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { UserInfo } from './interface';
+import { UserInfo, LoginParams, LoginResponse } from './interface';
 
 class User {
     axios: AxiosInstance;
@@ -7,15 +7,15 @@ class User {
         this.axios = axiosInstance;
     }
 
-    /** 查看我的信息 */
-    async fetchMyInfo(): Promise<UserInfo> {
-        const { data } = await this.axios.get('/mine');
+    /** 登录 */
+    async login(params: LoginParams): Promise<LoginResponse> {
+        const { data } = await this.axios.post('/api/v1/auth/login', params);
         return data;
     }
 
-    /** 修改我的信息  */
-    async updateMyInfo(body: Pick<UserInfo, 'nickname' | 'avatarUrl'>) {
-        const { data } = await this.axios.put('/mine', body);
+    /** 获取当前用户信息 */
+    async getCurrentUser(): Promise<UserInfo> {
+        const { data } = await this.axios.get('/api/v1/auth/me');
         return data;
     }
 }

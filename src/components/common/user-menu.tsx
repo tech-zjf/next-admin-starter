@@ -25,8 +25,6 @@ interface UserMenuProps {
 
 export function UserMenu({ children }: UserMenuProps) {
     const { userInfo } = useGlobalStore();
-    const userName = userInfo?.nickname || 'User';
-    const userAvatar = userInfo?.avatarUrl;
     const t = useTranslations('common.userMenu');
     const themeT = useTranslations('common.theme');
     const { theme, setTheme } = useTheme();
@@ -47,6 +45,8 @@ export function UserMenu({ children }: UserMenuProps) {
         await logout();
     };
 
+    if (!userInfo) return null;
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
@@ -55,19 +55,19 @@ export function UserMenu({ children }: UserMenuProps) {
                 <DropdownMenuLabel className="px-2 py-1">
                     <div className="flex items-center gap-3">
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                            {userAvatar ? (
-                                <img src={userAvatar} alt={userName} className="h-full w-full rounded-full object-cover" />
+                            {userInfo?.avatar ? (
+                                <img src={userInfo.avatar} alt={userInfo.nickname} className="h-full w-full rounded-full object-cover" />
                             ) : (
                                 <User className="h-5 w-5" />
                             )}
                         </div>
                         <div className="flex min-w-0 flex-col">
-                            <span className="truncate text-sm font-medium">{userName}</span>
+                            <span className="truncate text-sm font-medium">{userInfo?.nickname}</span>
+                            <span className="truncate text-xs text-muted-foreground">{userInfo?.phone}</span>
                         </div>
                     </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="my-1" />
-
                 {/* 主题切换 */}
                 <DropdownMenuItem className="cursor-pointer" onClick={() => handleThemeChange(theme === 'dark' ? 'light' : 'dark')}>
                     <div className="flex flex-1 items-center">
@@ -76,9 +76,7 @@ export function UserMenu({ children }: UserMenuProps) {
                         <span className="ml-auto shrink-0 text-xs text-muted-foreground">{theme === 'dark' ? themeT('dark') : themeT('light')}</span>
                     </div>
                 </DropdownMenuItem>
-
                 <DropdownMenuSeparator className="my-1" />
-
                 {/* 语言切换 */}
                 <DropdownMenuItem
                     className="cursor-pointer"

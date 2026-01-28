@@ -15,6 +15,21 @@
     "success": "Success",
     "error": "Error",
     "warning": "Warning",
+    "loginModal": {
+        "title": "Login to your account",
+        "description": "Please enter your phone number and password",
+        "phone": "Phone Number",
+        "phonePlaceholder": "13800138000",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "forgotPassword": "Forgot your password?",
+        "loggingIn": "Logging in...",
+        "login": "Login",
+        "loginSuccess": "Login successful",
+        "loginFailed": "Login failed, please check your phone number and password",
+        "phoneRequired": "Please enter your phone number",
+        "passwordRequired": "Please enter your password"
+    },
     "header": {
         "title": "Admin System",
         "welcome": "Welcome",
@@ -26,7 +41,7 @@
     "sidebar": {
         "home": "Home",
         "materialLibrary": "Material Library",
-        "superHitGeneration": "Super Hit Generation",
+        "generation": "Generation",
         "edit": "Edit",
         "help": "Help",
         "notifications": "Notifications",

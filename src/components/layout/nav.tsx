@@ -4,10 +4,11 @@ import { useGlobalStore } from '@/store/global';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
-export default function Header() {
+export default function Nav() {
     const t = useTranslations('common.header');
     const { setShowLoginModal, userInfo } = useGlobalStore();
     const router = useRouter();
+
     return (
         <header className="sticky left-0 right-0 top-0 z-[100] h-16 border-b border-border bg-background">
             <div className="flex h-full items-center justify-between px-6">

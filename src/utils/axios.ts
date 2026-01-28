@@ -17,20 +17,17 @@ const requestErrorHandler = (error: AxiosError): Promise<never> => {
     return Promise.reject(error);
 };
 
-const responseInterceptor = (response: AxiosResponse<ApiResponse>): any => {
+const responseInterceptor = (response: AxiosResponse<any>): any => {
     const res = response.data;
-    // 未登录处理
-    if (res.code === RESPONSE_CODE.UNAUTHORIZED) {
+    if (res.status !== 200) {
+        throw new Error(res.message || '请求失败');
+    }
+
+    if (res.status === 401) {
         Cookies.remove(TOKEN);
         const { setShowLoginModal } = useGlobalStore.getState();
         setShowLoginModal(true);
-        throw new Error(res.message);
-    }
-
-    // 其他业务错误处理
-    if (res.code !== RESPONSE_CODE.SUCCESS) {
-        alert(res.message);
-        throw new Error(res.message);
+        throw new Error(res.message || '登录已失效，请重新登录');
     }
 
     return res;

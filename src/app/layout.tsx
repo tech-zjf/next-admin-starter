@@ -7,8 +7,8 @@ import { ThemeProvider } from '@/components/context/theme-provider';
 import './globals.css';
 
 export const metadata: Metadata = {
-    title: 'Next Admin Starter',
-    description: '这是一个 Next.js 管理后台模板',
+    title: 'HeyKool',
+    description: '',
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
