@@ -1,6 +1,7 @@
 import { getRequestConfig } from 'next-intl/server';
 import { cookies } from 'next/headers';
 import { defaultLocale, locales, type Locale } from './config';
+import { NEXT_LOCALE } from '@/constants';
 
 async function loadMessages(locale: Locale) {
     const modules = ['common', 'theme', 'nav', 'header', 'sidebar', 'dashboard', 'users', 'settings'];
@@ -22,7 +23,7 @@ async function loadMessages(locale: Locale) {
 
 export default getRequestConfig(async () => {
     const cookieStore = await cookies();
-    const localeCookie = cookieStore.get('NEXT_LOCALE')?.value as Locale;
+    const localeCookie = cookieStore.get(NEXT_LOCALE)?.value as Locale;
     const locale = localeCookie && locales.includes(localeCookie) ? localeCookie : defaultLocale;
 
     return {

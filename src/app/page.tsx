@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation';
 
 export default function HomePage() {
-    // 首页重定向到登录页
-    redirect('/login');
+    return <div>落地页</div>;
 }

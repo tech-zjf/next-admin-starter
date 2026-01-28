@@ -11,7 +11,7 @@ export default function Header() {
     const tCommon = useTranslations('common');
 
     return (
-        <header className="fixed left-0 right-0 top-0 z-50 h-16 border-b bg-white shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-900">
+        <header className="sticky left-0 right-0 top-0 z-[100] h-16 border-b bg-white shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-900">
             <div className="flex h-full items-center justify-between px-6">
                 <div className="flex items-center">
                     <h1 className="text-xl font-bold text-gray-800 dark:text-white">{t('title')}</h1>
