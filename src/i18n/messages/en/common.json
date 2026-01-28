@@ -14,5 +14,32 @@
     "loading": "Loading...",
     "success": "Success",
     "error": "Error",
-    "warning": "Warning"
+    "warning": "Warning",
+    "header": {
+        "title": "Admin System",
+        "welcome": "Welcome",
+        "language": "Language",
+        "theme": "Theme",
+        "logo": "HeyKOOL",
+        "loginOrRegister": "Register/Login"
+    },
+    "sidebar": {
+        "home": "Home",
+        "materialLibrary": "Material Library",
+        "superHitGeneration": "Super Hit Generation",
+        "edit": "Edit",
+        "help": "Help",
+        "notifications": "Notifications",
+        "recharge": "Recharge"
+    },
+    "theme": {
+        "light": "Light Mode",
+        "dark": "Dark Mode",
+        "system": "System"
+    },
+    "userMenu": {
+        "theme": "Theme",
+        "language": "Language",
+        "logout": "Logout"
+    }
 }

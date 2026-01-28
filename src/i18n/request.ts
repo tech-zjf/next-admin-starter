@@ -4,7 +4,7 @@ import { defaultLocale, locales, type Locale } from './config';
 import { NEXT_LOCALE } from '@/constants';
 
 async function loadMessages(locale: Locale) {
-    const modules = ['common', 'theme', 'nav', 'header', 'sidebar', 'dashboard', 'users', 'settings'];
+    const modules = ['common'];
 
     const messages: Record<string, any> = {};
 

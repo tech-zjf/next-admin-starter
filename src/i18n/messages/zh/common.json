@@ -14,5 +14,32 @@
     "loading": "加载中...",
     "success": "成功",
     "error": "错误",
-    "warning": "警告"
+    "warning": "警告",
+    "header": {
+        "title": "后台管理系统",
+        "welcome": "欢迎",
+        "language": "语言",
+        "theme": "主题",
+        "logo": "HeyKOOL",
+        "loginOrRegister": "注册/登录"
+    },
+    "sidebar": {
+        "home": "首页",
+        "materialLibrary": "素材库",
+        "superHitGeneration": "超爆款生成",
+        "edit": "剪辑",
+        "help": "帮助",
+        "notifications": "通知",
+        "recharge": "充值"
+    },
+    "theme": {
+        "light": "浅色模式",
+        "dark": "深色模式",
+        "system": "跟随系统"
+    },
+    "userMenu": {
+        "theme": "主题切换",
+        "language": "语言切换",
+        "logout": "退出"
+    }
 }
