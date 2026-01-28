@@ -2,6 +2,7 @@
 import { createContext, useCallback, useContext, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useGlobalStore } from '@/store/global';
+import { LoginModal } from '../common/auth/login-modal';
 
 interface AuthContextValue {
     /** 登录 */
@@ -15,7 +16,7 @@ interface AuthContextValue {
 export const AuthContext = createContext<AuthContextValue | null>(null);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const { setUserInfo } = useGlobalStore();
+    const { setUserInfo, showLoginModal } = useGlobalStore();
     const router = useRouter();
     const pathname = usePathname();
 
@@ -40,6 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             }}
         >
             {children}
+            {showLoginModal && <LoginModal />}
         </AuthContext.Provider>
     );
 };
